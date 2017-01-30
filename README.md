@@ -61,3 +61,14 @@ To find out what the differences are between the golden master and the snapshot 
 ```
 $ open goldenMaster/http---localhost-4000-events.jpeg && open FIX-imageWidthBecauseOfClassRowBlogPageImg/http---localhost-4000-events.jpeg
 ```
+
+#### Other usages of the scripts
+
+##### Generate a screen-shot of a single URL
+
+Run `./take-a-screenshot-of-a-page.sh http://localhost:4000/2014/07/27/tell-dont-ask somefolder/http---localhost-4000-2014-07-27-tell-dont-ask.jpeg`
+
+
+##### Compare two screen-shots
+
+Run `./compareImages.sh goldenMaster/somePage.jpeg anotherBranch/someOtherPage.jpeg`
