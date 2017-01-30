@@ -18,8 +18,8 @@ Run `install-dependencies.sh` to ensure all node dependencies are in place.
 Usage
 -----
 
-Create a golden master of `site`
---------------------------------
+#### Create a golden master of `site`
+
 - Clone site 
 - Checkout the `master` branch
 - Ensure the site is running, execute the script `.\buildAndRunSite.sh`
@@ -27,8 +27,7 @@ Create a golden master of `site`
 - Run `./get-urls-from-site.sh` (this will create two .txt files)
 - Run `./take-screenshot-of-whole-site.sh` (output will be created in the `goldenmaster` folder)
 
-Create a snapshot of one of the branches of `site`
---------------------------------------------------
+#### Create a snapshot changes made to `site`
 - Stop `site` on Jekyll 
 - Remove the _site folder - to avoid residual from master branch (`rm -fr _site`)
 - Checkout the branch that contains the changes you wish to compare using the `golden master`
@@ -56,9 +55,8 @@ Dimension difference: [object Object]
 
 Differences are denoted in percentage and also dimensions are printed.
 
-Check final comparisons
------------------------
-To find out what the differences are, open both the source and target images via a image viewer and compare them side-by-side, for e.g.
+#### Final comparisons
+To find out what the differences are between the golden master and the snapshot of the changes made to `site`, open both the source and target images via a image viewer and compare them side-by-side, for e.g.
 
 ```
 $ open goldenMaster/http---localhost-4000-events.jpeg && open FIX-imageWidthBecauseOfClassRowBlogPageImg/http---localhost-4000-events.jpeg
