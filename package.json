@@ -1,0 +1,34 @@
+{
+  "name": "site-diff-tool",
+  "version": "1.0.0",
+  "description": "A simple tool put together with the help of bash scripts and some JS libraries to help compare two versions of the website site (https://github.com/codurance/site) and tell us if there is a difference in their visual layout.",
+  "dependencies": {
+    "image-diff": "^1.6.3",
+    "phantomjs": "2.1.7",
+    "system": "1.2.0",
+    "webshot": "0.18.0",
+    "file-exists": "2.0.0",
+    "node-resemble-js": "0.2.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/codurance/site-diff-tool.git"
+  },
+  "keywords": [
+    "compare",
+    "diff",
+    "differences",
+    "visual",
+    "layout"
+  ],
+  "author": "Mani Sarkar",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/codurance/site-diff-tool/issues"
+  },
+  "homepage": "https://github.com/codurance/site-diff-tool#readme"
+}

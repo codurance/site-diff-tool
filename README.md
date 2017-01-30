@@ -13,7 +13,7 @@ Installation
 ------------
 Ensure `node` is available on the target machine where this will be run.
 
-Run `install-dependencies.sh` to ensure all node dependencies are in place.
+Run `npm install --save-dev` to ensure all node dependencies are in place, it's personal preference to install the dependencies globally using `npm install -g`.
 
 Usage
 -----
