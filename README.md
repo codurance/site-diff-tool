@@ -14,7 +14,7 @@ Installation
 Ensure `npm` (~ v3.8.9) and `node` (~ v6.2.0) are available on the target machine where this will be run.
 
 Clone this repo and ensure the `site` project is available and can be run using `jekyll` (see instructions in the `site` project).
-`
+
 Run `npm install --save-dev` to ensure all node dependencies are in place, it's personal preference to install the dependencies globally using `npm install -g`.
 
 Usage
