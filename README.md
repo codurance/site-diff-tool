@@ -75,3 +75,9 @@ Run `./take-a-screenshot-of-a-page.sh http://localhost:4000/2014/07/27/tell-dont
 ##### Compare two screen-shots
 
 Run `./compareImages.sh goldenMaster/somePage.jpeg anotherBranch/someOtherPage.jpeg`
+
+
+##### Difference in layouts
+
+Below is an example of the differences between layouts that would be detected by the `site-diff-tool`:
+![](exampleComparison/comparisonWithVisibleDifferencesBetweenLayouts.png)
