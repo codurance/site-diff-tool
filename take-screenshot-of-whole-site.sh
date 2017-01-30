@@ -24,7 +24,7 @@ createOutput() {
     fi
 
     echo "Using $fileWithListOfUrls and creating screenshots in $outputFolder"
-    cat $fileWithListOfUrls | parallel -k --bar take-a-screenshot-of-a-page
+    cat $fileWithListOfUrls | parallel -k --bar --use-cpus-instead-of-cores take-a-screenshot-of-a-page
 }
 
 take-a-screenshot-of-a-page() {
