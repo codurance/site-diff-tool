@@ -31,4 +31,5 @@ if (fileExists(outputFile)) {
 	webshot(websiteURL, outputFile, options, function(err) {
   		// screenshot now saved to Output file
 	});	
+  console.log("Page captured to " + outputFile)
 }

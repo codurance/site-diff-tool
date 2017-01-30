@@ -10,23 +10,7 @@
 #         $ ./take-screenshot-of-whole-site.sh refactor-css-and-html
 #
 
-outputFolder=${1:-'goldenMaster'};
-
-take-screen-of-url() {
-    urlCounter=$[$urlCounter +1]
-    websiteURL="$websiteURL"
-    outputfileWithListOfUrls="$websiteURL"
-    outputfileWithListOfUrls=${websiteURL//[\:\/]/-}
-    outputfileWithListOfUrls="$outputfileWithListOfUrls.jpeg"
-
-    echo ""
-    echo "********************************************************"
-    echo "Progress: $urlCounter of $totalUrls url(s) from $fileWithListOfUrls"
-    echo "Visiting $websiteURL"
-    ./take-a-screenshot-of-a-page.sh "$websiteURL" "$outputFolder/$outputfileWithListOfUrls"
-    echo "Page captured to $outputFolder/$outputfileWithListOfUrls"
-    echo "********************************************************"
-}
+export outputFolder=${1:-'goldenMaster'};
 
 createOutput() {
     fileWithListOfUrls=$1
@@ -39,16 +23,40 @@ createOutput() {
         mkdir -p $outputFolder
     fi
 
-    while read -r websiteURL
-    do
-        #parallel -k take-screen-of-url --pipe < "$fileWithListOfUrls"
-        take-screen-of-url websiteURL
-    done < "$fileWithListOfUrls"
+    echo "Using $fileWithListOfUrls and creating screenshots in $outputFolder"
+    cat $fileWithListOfUrls | parallel -k --bar take-a-screenshot-of-a-page
 }
 
-START=$(date +%s)
+take-a-screenshot-of-a-page() {
+    websiteURL=$1
+    urlCounter=$[$urlCounter +1]
+
+    time {
+        outputfileFromTheUrl="$websiteURL"
+        outputfileFromTheUrl=${websiteURL//[\:\/]/-}
+        outputfileFromTheUrl="$outputfileFromTheUrl.jpeg"
+        outputFileWithFullPath="$outputFolder/$outputfileFromTheUrl"
+
+        echo "Taking screenshots with WebShot..."
+        echo "********************************************************"
+        echo "Progress: $urlCounter of $totalUrls url(s)"
+        echo "Visiting $websiteURL"
+
+        node take-shot-with-webshot.js "$websiteURL" "$outputFileWithFullPath"
+
+        while [ ! -f $outputFileWithFullPath  ] ;
+        do
+              echo -ne "."
+              sleep 1
+        done
+        echo "********************************************************"
+    }
+}
+
+export -f take-a-screenshot-of-a-page
+export -f createOutput
+export urlCounter=0
+export totalUrls=0
+
 createOutput "urls-en.txt"
 createOutput "urls-es.txt"
-END=$(date +%s)
-DIFF=$(( $END - $START ))
-echo "The process of capturing the whole site took $DIFF second(s)."
