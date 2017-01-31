@@ -3,11 +3,11 @@
 #
 # Usage:
 #
-#         $ ./compareImages.sh [source image] [target image]
+#         $ ./compareSourceAndTarget.sh [source image] [target image]
 #
 #    Example:
 #
-#         $ ./compareImages.sh goldenMaster/somePage.jpeg anotherBranch/someOtherPage.jpeg
+#         $ ./compareSourceAndTarget.sh goldenMaster/somePage.jpeg anotherBranch/someOtherPage.jpeg
 #
 
 checkIfFileExists() {

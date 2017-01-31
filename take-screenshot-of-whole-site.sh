@@ -14,9 +14,6 @@ export outputFolder=${1:-'goldenMaster'};
 
 createOutput() {
     fileWithListOfUrls=$1
-    totalUrls=$(cat $fileWithListOfUrls| wc -l)
-    totalUrls=$(echo $totalUrls | tr -d '[:space:]')
-    urlCounter=0
 
     if [ ! -d "$outputFolder" ];
     then
@@ -24,13 +21,12 @@ createOutput() {
     fi
 
     echo "Using $fileWithListOfUrls and creating screenshots in $outputFolder"
-    cat $fileWithListOfUrls | parallel -k --bar --use-cpus-instead-of-cores take-a-screenshot-of-a-page
+    cat $fileWithListOfUrls | parallel --keep-order -j10 --bar --use-cpus-instead-of-cores take-a-screenshot-of-a-page
 }
 
 take-a-screenshot-of-a-page() {
     websiteURL=$1
-    urlCounter=$[$urlCounter +1]
-
+    
     time {
         outputfileFromTheUrl="$websiteURL"
         outputfileFromTheUrl=${websiteURL//[\:\/]/-}
@@ -39,7 +35,6 @@ take-a-screenshot-of-a-page() {
 
         echo "Taking screenshots with WebShot..."
         echo "********************************************************"
-        echo "Progress: $urlCounter of $totalUrls url(s)"
         echo "Visiting $websiteURL"
 
         node take-shot-with-webshot.js "$websiteURL" "$outputFileWithFullPath"
@@ -55,8 +50,6 @@ take-a-screenshot-of-a-page() {
 
 export -f take-a-screenshot-of-a-page
 export -f createOutput
-export urlCounter=0
-export totalUrls=0
 
 createOutput "urls-en.txt"
 createOutput "urls-es.txt"
