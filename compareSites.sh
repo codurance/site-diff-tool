@@ -24,8 +24,8 @@ compareAnyTwoSites(){
 }
 
 compareAnyTwoSitesSitesForBothLanguages() {
-	cat "urls-en.txt" | parallel --keep-order -j10 --bar --use-cpus-instead-of-cores compareAnyTwoSites
-	cat "urls-es.txt" | parallel --keep-order -j10 --bar --use-cpus-instead-of-cores compareAnyTwoSites	
+	cat "urls-en.txt" | parallel --keep-order -j20 --bar --use-cpus-instead-of-cores compareAnyTwoSites
+	cat "urls-es.txt" | parallel --keep-order -j20 --bar --use-cpus-instead-of-cores compareAnyTwoSites	
 }
 
 checkIfFileExists() {

@@ -21,7 +21,7 @@ createOutput() {
     fi
 
     echo "Using $fileWithListOfUrls and creating screenshots in $outputFolder"
-    cat $fileWithListOfUrls | parallel --keep-order -j10 --bar --use-cpus-instead-of-cores take-a-screenshot-of-a-page
+    cat $fileWithListOfUrls | parallel --keep-order -j20 --bar --use-cpus-instead-of-cores take-a-screenshot-of-a-page
 }
 
 take-a-screenshot-of-a-page() {
@@ -33,9 +33,8 @@ take-a-screenshot-of-a-page() {
         outputfileFromTheUrl="$outputfileFromTheUrl.jpeg"
         outputFileWithFullPath="$outputFolder/$outputfileFromTheUrl"
 
-        echo "Taking screenshots with WebShot..."
         echo "********************************************************"
-        echo "Visiting $websiteURL"
+        echo "Visiting $websiteURL and taking screenshots with WebShot..."
 
         node take-shot-with-webshot.js "$websiteURL" "$outputFileWithFullPath"
 
