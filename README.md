@@ -17,6 +17,8 @@ Clone this repo and ensure the `site` project is available and can be run using 
 
 Run `npm install --save-dev` to ensure all node dependencies are in place, it's personal preference to install the dependencies globally using `npm install -g`.
 
+Install `GNU Parallel`, see https://www.gnu.org/software/parallel/.
+
 Usage
 -----
 
