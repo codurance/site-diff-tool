@@ -13,6 +13,12 @@
 PORT="4000"
 WEBSITE=${1-"http://localhost"}":$PORT"
 
+#
+# filters out all css, js, xml, image & icon files
+# filters out all urls containing \tag\, \posts\, \page, %7B%7Blink%7D%7D
+# filters out all urls ending with \ to remove duplicates
+# generates urls for the spanish version by adding the /es/ suffix to the host and port number
+#
 crawlSite() {
 	LANG=$1
 	LANGUAGE_SUBSTITUTION="s/\:$PORT/:$PORT$LANG/g"
@@ -22,10 +28,13 @@ crawlSite() {
 	wget --spider --recursive --force-html -l3 $WEBSITE 2>&1 \
   | grep '^--' | awk '{ print $3 }' \
   | grep -v '\.\(css\|js\|png\|gif\|jpg\|jpeg\|txt\|svg\|ico\|xml\)$' \
+  | grep -v '\/tag\/' \
+  | grep -v '\/posts\/' \
+  | grep -v '\/page' \
   | grep -v '\%7B\%7Blink\%7D\%7D' \
   | sort \
   | sed 's/\(.*\)\/$/\1/g' \
-  | sed $(echo "$LANGUAGE_SUBSTITUTION")   \
+  | sed $(echo "$LANGUAGE_SUBSTITUTION") \
   | uniq > $OUTPUT_FILE && rm -fr $WEBSITE
 	echo ""
 	
