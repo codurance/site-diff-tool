@@ -39,7 +39,7 @@ Usage
 - Ensure the site is running again, by executing the script `.\buildAndRunSite.sh`
 - Wait for `site` to start up and become ready to serve pages again
 - From inside the `site-diff-tool` project , run `./take-screenshot-of-whole-site.sh [unique name for the output folder]` (output will be created in this unique folder)
-- Then finally, run `./compareWithGoldenMaster.sh goldenMaster [unique name for the output folder] >> comparisonResults-[unique text].log`
+- Then finally, run `./compareSites.sh goldenMaster [unique name for the output folder] >> comparisonResults-[unique text].log`
 
 The results of the comparisons are stored in the `comparisonResults-[unique text].log` file. They look like the below when the web pages are different, no response is printed if they are the same (to avoid noise in the logs):
 ```
