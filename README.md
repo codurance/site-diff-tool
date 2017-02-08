@@ -42,17 +42,25 @@ Usage
 - Then finally, run `./compareSites.sh goldenMaster [unique name for the output folder] >> comparisonResults-[unique text].log`
 
 The results of the comparisons are stored in the `comparisonResults-[unique text].log` file. They look like the below when the web pages are different, no response is printed if they are the same (to avoid noise in the logs):
-```
+
+```html
 .
 .
 .
-Progress: 4 of 190 url(s) in urls-en.txt
-Progress: 5 of 190 url(s) in urls-en.txtgoldenMaster/http---localhost-4000-2014-04-10-keeping-the-domain-in-core.jpeg is different from FIX-imageWidthBecauseOfClassRowBlogPageImg/http---localhost-4000-2014-04-10-keeping-the-domain-in-core.jpeg and differs by 18.57%
-.
-.
-.
-Progress: 12 of 190 url(s) in urls-en.txtgoldenMaster/http---localhost-4000-2015-06-13-big-data-skills-spectrum.jpeg is different from FIX-imageWidthBecauseOfClassRowBlogPageImg/http---localhost-4000-2015-06-13-big-data-skills-spectrum.jpeg and differs by 14.69%
-Dimension difference: [object Object]
+
+<div>
+    <div>
+      <div class='panel note'><p><strong>Target url:</strong> <a href='http://localhost:4000/2015/03/16/installing-zprezto-a-quick-guide'/>http://localhost:4000/2015/03/16/installing-zprezto-a-quick-guide</a></p>
+      <p>Images are <strong>different</strong> and differs by <strong>10.67%</strong>. <strong>Dimension difference:</strong> {"width":0,"height":78}</p>
+      <p><strong>Source:</strong> goldenMaster/http---localhost-4000-2015-03-16-installing-zprezto-a-quick-guide.jpeg <strong>Target:</strong> refactor-custom-css-file-media-queries/http---localhost-4000-2015-03-16-installing-zprezto-a-quick-guide.jpeg </p>
+    </div>
+    <div class='container'>
+      <img class="source-target-image-dimensions" alt='goldenMaster/http---localhost-4000-2015-03-16-installing-zprezto-a-quick-guide.jpeg' src='goldenMaster/http---localhost-4000-2015-03-16-installing-zprezto-a-quick-guide.jpeg'>
+      <img class="source-target-image-dimensions" alt='refactor-custom-css-file-media-queries/http---localhost-4000-2015-03-16-installing-zprezto-a-quick-guide.jpeg' src='refactor-custom-css-file-media-queries/http---localhost-4000-2015-03-16-installing-zprezto-a-quick-guide.jpeg'>
+    </div>
+  </div>
+  <br>
+  <hr>
 .
 .
 .
@@ -61,11 +69,8 @@ Dimension difference: [object Object]
 Differences are denoted in percentage and also dimensions are printed.
 
 #### Final comparisons
-To find out what the differences are between the `golden master` and the snapshot of the changes made to `site`, open both the source and target images via a image viewer and compare them side-by-side, for e.g.
+To find out what the differences are between the `golden master` and the snapshot of the changes made to `site`, insert the contents of the output produced by the above script `compareSites.sh` into the body of `CompareImages.html`, look for the comment in the file: `<!-- Paste your body with <div>s here -->`.
 
-```
-$ open goldenMaster/http---localhost-4000-events.jpeg && open FIX-imageWidthBecauseOfClassRowBlogPageImg/http---localhost-4000-events.jpeg
-```
 
 #### Other usages of the scripts
 
@@ -76,7 +81,7 @@ Run `./take-a-screenshot-of-a-page.sh http://localhost:4000/2014/07/27/tell-dont
 
 ##### Compare two screen-shots
 
-Run `./compareImages.sh goldenMaster/somePage.jpeg anotherBranch/someOtherPage.jpeg`
+Run `./compareSourceAndTarget.sh goldenMaster/somePage.jpeg anotherBranch/someOtherPage.jpeg`
 
 
 ##### Difference in layouts
