@@ -69,7 +69,11 @@ The results of the comparisons are stored in the `comparisonResults-[unique text
 Differences are denoted in percentage and also dimensions are printed.
 
 #### Final comparisons
-To find out what the differences are between the `golden master` and the snapshot of the changes made to `site`, insert the contents of the output produced by the above script `compareSites.sh` into the body of `CompareImages.html`, look for the comment in the file: `<!-- Paste your body with <div>s here -->`.
+To find out what the differences are between the `golden master` and the snapshot of the changes made to `site`, insert the contents of the output produced by the above script `compareSites.sh` into the body of `CompareImages.html`, look for the comment in the file: `<!-- Paste your body with <div>s here -->`, save the file.
+
+The open the `CompareImages.html` in the browser to something like the below example:
+
+![](exampleComparison/finalResultsInCompareImagesHtmlFile.png)
 
 
 #### Other usages of the scripts
